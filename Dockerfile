@@ -1,14 +1,14 @@
 FROM ubuntu:focal
 
 LABEL \
-  version="3.3.6" \
+  version="3.4.6" \
   description="Docker image to run AnnotSV" \
   maintainer="Alexander Paul <alex.paul@wustl.edu>"
 
 RUN apt-get update -y && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-  curl \
   g++ \
   libbz2-dev \
+  libcurl4-openssl-dev \
   liblzma-dev \
   make \
   python3 \
@@ -48,7 +48,7 @@ RUN wget https://github.com/samtools/bcftools/releases/download/$BCFTOOLS_VERSIO
   rm -rf /tmp/bcftools-$BCFTOOLS_VERSION /tmp/bcftools-$BCFTOOLS_VERSION.tar.bz2
 
 
-ENV ANNOTSV_VERSION=3.3.6
+ENV ANNOTSV_VERSION=3.4.6
 ENV ANNOTSV=/opt/AnnotSV_$ANNOTSV_VERSION
 
 WORKDIR /opt
